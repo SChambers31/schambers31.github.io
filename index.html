@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shelly Chambers · Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f7f4;--surface:#ffffff;--surface2:#f2f1ee;
+  --text:#181816;--muted:#6a6a66;--subtle:#9a9a96;
+  --accent:#c0392b;--accent-light:#fdf2f1;--accent2:#1a3a5c;
+  --border:rgba(0,0,0,0.07);--border-med:rgba(0,0,0,0.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Figtree',system-ui,sans-serif;
+  --transition:0.25s ease;
+}
+[data-theme="dark"]{
+  --bg:#0f0f0d;--surface:#1a1a17;--surface2:#222220;
+  --text:#f0efe9;--muted:#9a9a94;--subtle:#6a6a64;
+  --accent:#e8574a;--accent-light:#2a1a18;--accent2:#4a7fa8;
+  --border:rgba(255,255,255,0.07);--border-med:rgba(255,255,255,0.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;transition:background var(--transition),color var(--transition)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:58px;transition:background var(--transition)}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--text);text-decoration:none;letter-spacing:0.01em}
+.nav-logo span{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color 0.18s}
+.nav-links a:hover{color:var(--text)}
+.theme-toggle{background:var(--surface2);border:1px solid var(--border-med);border-radius:100px;width:52px;height:28px;cursor:pointer;position:relative;transition:background var(--transition),border var(--transition);flex-shrink:0}
+.theme-toggle::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform 0.25s ease,background var(--transition)}
+[data-theme="dark"] .theme-toggle::after{transform:translateX(24px)}
+.toggle-icons{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 6px;font-size:11px;pointer-events:none;user-select:none}
+
+/* LAYOUT */
+.page-wrap{max-width:860px;margin:0 auto;padding:0 2.5rem}
+
+/* HERO */
+.hero{padding:7rem 0 6rem}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:1.75rem}
+.eyebrow-line{width:32px;height:1px;background:var(--accent)}
+.eyebrow-text{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-family:var(--serif);font-size:clamp(3rem,7vw,5rem);line-height:1.05;font-weight:400;margin-bottom:0.25rem}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-subtitle{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);font-weight:400;color:var(--muted);font-style:italic;margin-bottom:2rem}
+.hero-bio{font-size:16px;color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:2.5rem}
+.hero-links{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:3rem}
+.pill-link{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:100px;font-size:13px;font-weight:400;text-decoration:none;border:1px solid var(--border-med);color:var(--muted);transition:all 0.18s}
+.pill-link:hover{border-color:var(--accent);color:var(--accent)}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 26px;border-radius:6px;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:all 0.18s;font-family:var(--sans)}
+.btn-primary{background:var(--accent);color:#fff;border:none}
+.btn-primary:hover{opacity:0.88}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border-med)}
+.btn-ghost:hover{border-color:var(--text)}
+
+/* SECTION */
+.section{padding:5rem 0;border-top:1px solid var(--border)}
+.section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.section-title{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.6rem);font-weight:400;line-height:1.15;margin-bottom:0.75rem}
+.section-sub{color:var(--muted);max-width:520px;line-height:1.75;margin-bottom:3rem;font-size:15px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:3.5rem;align-items:start}
+.about-text p{color:var(--muted);line-height:1.85;margin-bottom:1.1rem;font-size:15px}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:border-color 0.18s}
+.stat-card:hover{border-color:var(--accent)}
+.stat-num{font-family:var(--serif);font-size:2.4rem;color:var(--text);line-height:1;margin-bottom:5px}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:0.03em;text-transform:uppercase}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+.skill-group{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.4rem;transition:border-color 0.2s}
+.skill-group:hover{border-color:var(--border-med)}
+.skill-group-head{display:flex;align-items:center;gap:8px;margin-bottom:0.85rem}
+.skill-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.skill-group-title{font-size:13px;font-weight:500;color:var(--text)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px}
+.skill-tag{font-size:11.5px;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:3px 10px;transition:all 0.15s}
+.skill-tag:hover{color:var(--accent);border-color:var(--accent)}
+
+/* EXPERIENCE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border-med)}
+.tl-item{position:relative;margin-bottom:3rem}
+.tl-item::before{content:'';position:absolute;left:-2.3rem;top:7px;width:9px;height:9px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);transition:border-color var(--transition)}
+.tl-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:3px}
+.tl-role{font-size:15px;font-weight:500;color:var(--text)}
+.tl-period{font-size:12px;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:2px 11px;white-space:nowrap}
+.tl-company{font-size:13px;color:var(--accent);margin-bottom:10px;font-weight:400}
+.tl-desc{font-size:13.5px;color:var(--muted);line-height:1.75}
+.tl-desc li{margin-left:1.1rem;margin-bottom:5px}
+.tl-section-head{font-size:12px;font-weight:500;color:var(--text);text-transform:uppercase;letter-spacing:0.06em;margin:12px 0 6px;opacity:0.6}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;transition:all 0.22s;position:relative;overflow:hidden}
+.project-card:hover{border-color:rgba(192,57,43,0.35);transform:translateY(-3px)}
+.project-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease}
+.project-card:hover::after{transform:scaleX(1)}
+.project-tag{font-size:11px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:1rem}
+.project-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.4}
+.project-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:1.25rem}
+.project-metrics{display:flex;gap:1.25rem;flex-wrap:wrap}
+.metric-num{font-family:var(--serif);font-size:1.5rem;color:var(--text);line-height:1}
+.metric-label{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.testimonial-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;display:flex;flex-direction:column;gap:1.25rem;transition:border-color 0.2s}
+.testimonial-card:hover{border-color:var(--border-med)}
+.t-stars{color:#e8a020;font-size:13px;letter-spacing:2px}
+.t-quote{font-family:var(--serif);font-size:16px;color:var(--text);line-height:1.7;font-style:italic;position:relative;padding-left:1.1rem}
+.t-quote::before{content:'"';position:absolute;left:-4px;top:-10px;font-size:3.5rem;color:var(--accent);opacity:0.15;font-family:var(--serif);line-height:1}
+.t-author{display:flex;align-items:center;gap:10px;margin-top:auto}
+.t-avatar{width:38px;height:38px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--accent);flex-shrink:0;border:1px solid rgba(192,57,43,0.15)}
+.t-name{font-size:13px;font-weight:500;color:var(--text)}
+.t-role{font-size:12px;color:var(--muted)}
+
+/* LINKEDIN POSTS */
+.li-import-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:2rem}
+.li-import-label{font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;display:block}
+.li-import-hint{font-size:12px;color:var(--muted);margin-bottom:1rem;line-height:1.6}
+textarea#li-input{width:100%;min-height:90px;padding:12px;font-family:var(--sans);font-size:13px;color:var(--text);background:var(--surface2);border:1px solid var(--border);border-radius:8px;resize:vertical;outline:none;transition:border-color 0.2s;line-height:1.6}
+textarea#li-input:focus{border-color:var(--accent)}
+textarea#li-input::placeholder{color:var(--subtle)}
+.li-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;transition:opacity 0.18s;margin-top:10px}
+.li-btn:hover{opacity:0.85}
+.li-btn:disabled{opacity:0.45;cursor:not-allowed}
+.posts-grid{display:grid;gap:1rem}
+.post-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color 0.2s}
+.post-card:hover{border-color:var(--border-med)}
+.post-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.post-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--accent);flex-shrink:0}
+.post-meta-name{font-size:13px;font-weight:500;color:var(--text)}
+.post-meta-date{font-size:12px;color:var(--muted)}
+.post-body{font-size:14px;color:var(--muted);line-height:1.8;white-space:pre-wrap;word-break:break-word}
+.post-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
+.post-hashtag{font-size:12px;color:var(--accent);background:var(--accent-light);padding:3px 10px;border-radius:100px}
+.post-engagement{display:flex;gap:1.25rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.eng-item{font-size:12px;color:var(--muted)}
+.remove-btn{margin-left:auto;font-size:12px;color:var(--subtle);cursor:pointer;transition:color 0.15s;background:none;border:none;font-family:var(--sans)}
+.remove-btn:hover{color:var(--accent)}
+.loading-dots{display:inline-flex;gap:3px;align-items:center}
+.loading-dots span{width:4px;height:4px;border-radius:50%;background:#fff;animation:blink 1s infinite}
+.loading-dots span:nth-child(2){animation-delay:0.15s}
+.loading-dots span:nth-child(3){animation-delay:0.3s}
+@keyframes blink{0%,80%,100%{opacity:0.2}40%{opacity:1}}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted);font-size:14px;background:var(--surface);border:1px dashed var(--border-med);border-radius:14px}
+.empty-icon{font-size:2rem;margin-bottom:0.75rem;opacity:0.35;display:block}
+
+/* CONTACT */
+.contact-wrapper{background:var(--accent2);border-radius:20px;padding:3.5rem;color:#fff}
+[data-theme="dark"] .contact-wrapper{background:#1e2d3d}
+.contact-wrapper .eyebrow-line{background:rgba(255,255,255,0.4)}
+.contact-wrapper .eyebrow-text{color:rgba(255,255,255,0.6)}
+.contact-wrapper .section-title{color:#fff}
+.contact-wrapper .section-sub{color:rgba(255,255,255,0.65);max-width:100%}
+.contact-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.contact-link{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;text-decoration:none;font-size:14px;transition:all 0.2s}
+.contact-link:hover{background:rgba(255,255,255,0.2)}
+
+/* CERTS & EDU */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.4rem}
+.info-card-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.info-card-sub{font-size:12px;color:var(--muted)}
+.info-card-meta{display:inline-block;font-size:11px;color:var(--accent);background:var(--accent-light);padding:2px 8px;border-radius:100px;margin-top:6px}
+
+footer{text-align:center;padding:2rem;font-size:12px;color:var(--subtle);border-top:1px solid var(--border)}
+
+/* FADE-IN */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:680px){
+  .about-grid,.projects-grid,.testimonials-grid,.two-col{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  nav{padding:0 1.25rem}
+  .nav-links{gap:1rem}
+  .page-wrap{padding:0 1.25rem}
+  .hero{padding:5rem 0 4rem}
+  .section{padding:3.5rem 0}
+  .contact-wrapper{padding:2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Shelly<span>.</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#posts">Posts</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <div class="toggle-icons"><span>☀️</span><span>🌙</span></div>
+    </button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<!-- HERO -->
+<section class="hero fade-in">
+  <div class="hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Product Manager</span></div>
+  <h1>Shelly <em>Chambers</em></h1>
+  <p class="hero-subtitle">Strategy · Discovery · Delivery</p>
+  <p class="hero-bio">Product-focused professional with deep expertise in strategy, data analysis, and product lifecycle management. I bring 15+ years of cross-functional leadership in media and broadcast, combined with a new chapter building and consulting on digital products — from streaming apps to AI-driven tools.</p>
+  <div class="hero-links">
+    <a class="pill-link" href="mailto:shellychambers111@gmail.com">✉ shellychambers111@gmail.com</a>
+    <a class="pill-link" href="https://www.linkedin.com/in/s-j-chambers" target="_blank">in LinkedIn</a>
+  </div>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-primary">View Projects →</a>
+    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section fade-in">
+  <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">About Me</span></div>
+  <h2 class="section-title">Bridging broadcast<br/>&amp; product thinking</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a product manager who has spent over 15 years at the intersection of content, audience, and operations — most recently at AMC Networks International, where I led strategic campaign planning and product innovation for a global broadcaster reaching 130+ countries.</p>
+      <p>In 2026 I made the deliberate move into product full-time: advising on an AI broadcast solution, building a streaming recommendation app from scratch, and leading growth for a tech podcast. I'm energised by solving discovery and decision-fatigue problems with a blend of user empathy and data.</p>
+      <p>I'm also passionate about giving back — through mentoring programmes, The Girls Network charity, and the WFTV mentorship programme, where I was mentored by a Group Director of Product Management at Sky.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-num">15+</div><div class="stat-label">Years experience</div></div>
+      <div class="stat-card"><div class="stat-num">130+</div><div class="stat-label">Countries reached at AMCNI</div></div>
+      <div class="stat-card"><div class="stat-num">£150m+</div><div class="stat-label">Inventory managed at ITV</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Active 2026 products</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section fade-in">
+  <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Skills & Tools</span></div>
+  <h2 class="section-title">How I work</h2>
+  <p class="section-sub">Blending product discipline with broadcast and content expertise — from ideation to delivery.</p>
+  <div class="skills-grid">
+    <div class="skill-group"><div class="skill-group-head"><div class="skill-dot"></div><span class="skill-group-title">Product Strategy</span></div><div class="skill-tags"><span class="skill-tag">Roadmapping</span><span class="skill-tag">OKRs</span><span class="skill-tag">MVP</span><span class="skill-tag">Business cases</span><span class="skill-tag">Prioritisation</span></div></div>
+    <div class="skill-group"><div class="skill-group-head"><div class="skill-dot"></div><span class="skill-group-title">Discovery & Research</span></div><div class="skill-tags"><span class="skill-tag">User interviews</span><span class="skill-tag">Jobs-to-be-done</span><span class="skill-tag">Audience insights</span><span class="skill-tag">Usability testing</span></div></div>
+    <div class="skill-group"><div class="skill-group-head"><div class="skill-dot"></div><span class="skill-group-title">Data & Analytics</span></div><div class="skill-tags"><span class="skill-tag">SQL</span><span class="skill-tag">Excel</span><span class="skill-tag">A/B testing</span><span class="skill-tag">Performance measurement</span></div></div>
+    <div class="skill-group"><div class="skill-group-head"><div class="skill-dot"></div><span class="skill-group-title">Delivery</span></div><div class="skill-tags"><span class="skill-tag">Agile</span><span class="skill-tag">Scrum</span><span class="skill-tag">User stories</span><span class="skill-tag">Requirements definition</span></div></div>
+    <div class="skill-group"><div class="skill-group-head"><div class="skill-dot"></div><span class="skill-group-title">Tools</span></div><div class="skill-tags"><span class="skill-tag">Jira</span><span class="skill-tag">Confluence</span><span class="skill-tag">Figma</span><span class="skill-tag">Notion</span></div></div>
+    <div class="skill-group"><div class="skill-group-head"><div class="skill-dot"></div><span class="skill-group-title">Emerging</span></div><div class="skill-tags"><span class="skill-tag">AI prototyping</span><span class="skill-tag">Vibe coding</span><span class="skill-tag">Machine learning</span><span class="skill-tag">Workflow automation</span></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section fade-in">
+  <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Work Experience</span></div>
+  <h2 class="section-title">Where I've been</h2>
+  <p class="section-sub">From global broadcasting to early-stage product consulting — a career built on strategy, storytelling, and execution.</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-top"><span class="tl-role">Media Strategy Manager</span><span class="tl-period">May 2014 – Dec 2025</span></div>
+      <div class="tl-company">AMC Networks International · London</div>
+      <div class="tl-desc">
+        <div class="tl-section-head">Product Innovation</div>
+        <ul>
+          <li>Built business case for a campaign commissioning system to replace manual processes, projecting a 40% reduction in administrative workload.</li>
+          <li>Proposed integration of DEI management into Workday, automating processes previously managed manually across 6+ teams.</li>
+        </ul>
+        <div class="tl-section-head">Cross-functional Leadership</div>
+        <ul>
+          <li>Managed end-to-end UK channel rebrands — 100% on-time delivery across multiple platforms.</li>
+          <li>Delivered strategy workshops to embed an audience-first planning model across cross-functional teams.</li>
+        </ul>
+        <div class="tl-section-head">Metrics & Impact</div>
+        <ul>
+          <li>Analysed audience data to inform product decisions — up to 15% uplift in key viewing slots.</li>
+          <li>Built a searchable trailer archive, cutting asset retrieval time by approx. 60%.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-top"><span class="tl-role">Media Planning Contractor</span><span class="tl-period">Sep 2013 – Feb 2014</span></div>
+      <div class="tl-company">Warner Bros. Discovery · London</div>
+      <div class="tl-desc"><ul><li>Managed campaign planning for WBD channels across CEEMEA emerging markets, contributing to increased market share.</li><li>Coordinated integrated campaign and continuity strategies to achieve reach and frequency objectives.</li></ul></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-top"><span class="tl-role">Senior Media Planner &amp; Acting Head of Media Planning</span><span class="tl-period">Oct 2006 – Jun 2013</span></div>
+      <div class="tl-company">ITV plc · London</div>
+      <div class="tl-desc"><ul>
+        <li>Led promotional strategy and oversaw inventory valued at £150m+ across broadcast and digital channels.</li>
+        <li>Partnered with Business Analysts to redesign internal scheduling systems — defining business requirements and user stories.</li>
+        <li>Reduced manual workload through workflow redesign and technical enhancements.</li>
+      </ul></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-top"><span class="tl-role">Earlier Career</span><span class="tl-period">Pre-2006</span></div>
+      <div class="tl-company">Flextech · Carlton Television (ITV) · Turner Broadcasting</div>
+      <div class="tl-desc">Media Planner · Advertising Sales Research Executive · Research Assistant</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section fade-in">
+  <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Projects</span></div>
+  <h2 class="section-title">What I'm building</h2>
+  <p class="section-sub">Current consulting and product work, live in 2026.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-tag">AI · Consulting</span>
+      <div class="project-title">AI Broadcast Solution</div>
+      <p class="project-desc">Advising on an AI-led solution within a broadcast environment. Contributing to product definition, use case development, and early-stage testing of AI-driven features aligned to operational workflows.</p>
+      <div class="project-metrics">
+        <div class="metric"><div class="metric-num">2026</div><div class="metric-label">Active</div></div>
+        <div class="metric"><div class="metric-num">Consulting</div><div class="metric-label">Role</div></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Product · Founder</span>
+      <div class="project-title">Streaming Recommendation App</div>
+      <p class="project-desc">Designing and building a content discovery app to reduce decision fatigue. Features include 2-minute rapid picks and curated flows. Built with AI-assisted coding and iterative prototyping using broadcast domain expertise.</p>
+      <div class="project-metrics">
+        <div class="metric"><div class="metric-num">0→1</div><div class="metric-label">Build stage</div></div>
+        <div class="metric"><div class="metric-num">Prototype</div><div class="metric-label">Phase</div></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Growth · Content</span>
+      <div class="project-title">Unlock Her Tech Podcast</div>
+      <p class="project-desc">Growth and product marketing lead. Designed a content-led strategy for audience development, transformed transcripts into high-performing LinkedIn carousels and authority posts, and analysed engagement to refine distribution.</p>
+      <div class="project-metrics">
+        <div class="metric"><div class="metric-num">Multi</div><div class="metric-label">Platform reach</div></div>
+        <div class="metric"><div class="metric-num">Consulting</div><div class="metric-label">Role</div></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Workflow · Automation</span>
+      <div class="project-title">Campaign Commissioning System</div>
+      <p class="project-desc">Scoped and built a business case for a system to replace manual campaign commissioning at AMCNI. Defined requirements, secured stakeholder buy-in, projected 40% reduction in admin workload.</p>
+      <div class="project-metrics">
+        <div class="metric"><div class="metric-num">40%</div><div class="metric-label">Projected admin reduction</div></div>
+        <div class="metric"><div class="metric-num">AMCNI</div><div class="metric-label">Organisation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section fade-in">
+  <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Testimonials</span></div>
+  <h2 class="section-title">What colleagues say</h2>
+  <p class="section-sub">Replace these placeholders with real LinkedIn recommendations or colleague endorsements.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">Shelly has a remarkable ability to translate complex operational challenges into clear product thinking. Her broadcast experience means she asks exactly the right questions — and the roadmap she shaped was both ambitious and deliverable.</p>
+      <div class="t-author"><div class="t-avatar">AB</div><div><div class="t-name">Alex B.</div><div class="t-role">Director · Broadcast Consulting</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">What sets Shelly apart is how she combines data rigour with genuine audience empathy. Every recommendation she made was backed by evidence and grounded in real user behaviour — that combination is rare.</p>
+      <div class="t-author"><div class="t-avatar">CW</div><div><div class="t-name">Claire W.</div><div class="t-role">VP Marketing · AMCNI</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">During the mentorship I saw how naturally Shelly thinks in frameworks — prioritisation, user journeys, OKRs. She's already operating at a senior PM level and brings a depth of media domain expertise that most pure-product candidates simply don't have.</p>
+      <div class="t-author"><div class="t-avatar">KP</div><div><div class="t-name">K. Patel</div><div class="t-role">Group Director of Product Management · Sky</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">Shelly ran our rebranding rollout with precision — timelines, stakeholder management, cross-team coordination. She kept everyone aligned without ever losing sight of the audience outcome. She's the kind of PM you want on a high-stakes project.</p>
+      <div class="t-author"><div class="t-avatar">MT</div><div><div class="t-name">Mark T.</div><div class="t-role">Head of Creative · AMCNI</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section id="education" class="section fade-in">
+  <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Education & Certifications</span></div>
+  <h2 class="section-title">Always learning</h2>
+  <div class="two-col" style="margin-bottom:1.25rem">
+    <div class="info-card"><div class="info-card-title">Product Management Degree</div><div class="info-card-sub">Code First Girls</div><span class="info-card-meta">Distinction</span></div>
+    <div class="info-card"><div class="info-card-title">Plus-Masters Certificate in Data</div><div class="info-card-sub">Code First Girls</div><span class="info-card-meta">Distinction</span></div>
+    <div class="info-card"><div class="info-card-title">Certificate of Higher Education, Life Sciences</div><div class="info-card-sub">Birkbeck University</div><span class="info-card-meta">Distinction</span></div>
+    <div class="info-card"><div class="info-card-title">BA Hons. Business Studies</div><div class="info-card-sub">London Guildhall University</div><span class="info-card-meta">Honours</span></div>
+  </div>
+  <div class="two-col">
+    <div class="info-card"><div class="info-card-title">Agile & Scrum Fundamentals</div><div class="info-card-sub">Certification</div></div>
+    <div class="info-card"><div class="info-card-title">SQL & Data Analysis</div><div class="info-card-sub">Certification</div></div>
+    <div class="info-card"><div class="info-card-title">Machine Learning MOOC</div><div class="info-card-sub">Online course</div></div>
+    <div class="info-card"><div class="info-card-title">AMCNI Emerging Leaders Programme</div><div class="info-card-sub">Leadership development</div></div>
+  </div>
+</section>
+
+<!-- LINKEDIN POSTS -->
+<section id="posts" class="section fade-in">
+  <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">LinkedIn Posts</span></div>
+  <h2 class="section-title">Thoughts on product</h2>
+  <p class="section-sub">Paste any LinkedIn post or repost below — AI will clean it up and format it as a card on your site.</p>
+  <div class="li-import-box">
+    <label class="li-import-label" for="li-input">Paste a LinkedIn post</label>
+    <p class="li-import-hint">Copy the text of any post from LinkedIn and paste it here. The AI will format it, extract hashtags, and add it to your portfolio.</p>
+    <textarea id="li-input" placeholder="Paste your LinkedIn post text here...&#10;&#10;e.g. After 15 years in broadcast, here's what I've learned about audience-first thinking...&#10;&#10;#ProductManagement #Broadcast #ContentDiscovery"></textarea>
+    <button class="li-btn" id="li-btn" onclick="importPost()">
+      <span id="li-btn-text">Format with AI</span>
+      <span id="li-loading" class="loading-dots" style="display:none"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+  <div id="posts-container">
+    <div class="empty-state"><span class="empty-icon">✍️</span>Your formatted posts will appear here.<br/>Paste a post above to get started.</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section fade-in" style="padding-top:2rem">
+  <div class="contact-wrapper">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Get in touch</span></div>
+    <h2 class="section-title">Let's build something together</h2>
+    <p class="section-sub">Open to senior PM roles, product consulting, and conversations about content discovery, streaming, or AI product development.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:shellychambers111@gmail.com">✉ shellychambers111@gmail.com</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/s-j-chambers" target="_blank">in LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+<footer>Shelly Chambers · Product Manager · © 2026</footer>
+
+<script>
+function toggleTheme(){
+  const html=document.documentElement;
+  html.setAttribute('data-theme',html.getAttribute('data-theme')==='dark'?'light':'dark');
+  localStorage.setItem('theme',html.getAttribute('data-theme'));
+}
+(function(){
+  const saved=localStorage.getItem('theme');
+  if(saved)document.documentElement.setAttribute('data-theme',saved);
+})();
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+let posts=[];
+async function importPost(){
+  const input=document.getElementById('li-input');
+  const raw=input.value.trim();
+  if(!raw){alert('Please paste a LinkedIn post first.');return;}
+  const btn=document.getElementById('li-btn');
+  const btnText=document.getElementById('li-btn-text');
+  const loading=document.getElementById('li-loading');
+  btn.disabled=true;btnText.textContent='Formatting';loading.style.display='inline-flex';
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:1000,
+        messages:[{role:'user',content:`Format this LinkedIn post for a product manager's portfolio. Return ONLY valid JSON (no markdown, no backticks):
+{"body":"cleaned post text, keep the voice authentic, max 320 chars with ellipsis if longer","hashtags":["up","to","4","words","no","hash"],"date":"plausible recent date like Mar 2026","likes":number 50-600,"comments":number 5-50}
+
+Post:
+${raw}`}]
+      })
+    });
+    const data=await resp.json();
+    const text=data.content.map(i=>i.text||'').join('');
+    const clean=text.replace(/```json|```/g,'').trim();
+    const post=JSON.parse(clean);posts.unshift(post);renderPosts();input.value='';
+  }catch(e){alert('Something went wrong. Please try again.');console.error(e);}
+  finally{btn.disabled=false;btnText.textContent='Format with AI';loading.style.display='none';}
+}
+function renderPosts(){
+  const c=document.getElementById('posts-container');
+  if(!posts.length){c.innerHTML='<div class="empty-state"><span class="empty-icon">✍️</span>Your formatted posts will appear here.<br/>Paste a post above to get started.</div>';return;}
+  c.innerHTML='<div class="posts-grid">'+posts.map((p,i)=>`<div class="post-card"><div class="post-header"><div class="post-avatar">SC</div><div><div class="post-meta-name">Shelly Chambers</div><div class="post-meta-date">${p.date||'Recently'} · LinkedIn</div></div></div><div class="post-body">${esc(p.body)}</div>${p.hashtags&&p.hashtags.length?'<div class="post-tags">'+p.hashtags.map(h=>`<span class="post-hashtag">#${esc(h)}</span>`).join('')+'</div>':''}<div class="post-engagement"><span class="eng-item">👍 ${p.likes||0}</span><span class="eng-item">💬 ${p.comments||0} comments</span><button class="remove-btn" onclick="removePost(${i})">Remove</button></div></div>`).join('')+'</div>';
+}
+function removePost(i){posts.splice(i,1);renderPosts();}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+</script>
+</body>
+</html>
